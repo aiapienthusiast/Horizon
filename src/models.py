@@ -130,6 +130,7 @@ class AIProvider(str, Enum):
     MINIMAX = "minimax"
     DEEPSEEK = "deepseek"
     OLLAMA = "ollama"
+    CHEAPERINFERENCE = "cheaperinference"
 
 
 # Provider-specific defaults used by setup and provider-chain expansion.
@@ -180,6 +181,11 @@ AI_PROVIDER_DEFAULTS = {
         "model": "llama3.1",
         "api_key_env": "",
         "base_url": "http://localhost:11434/v1",
+    },
+    AIProvider.CHEAPERINFERENCE: {
+        "model": "gpt-5.4-mini",
+        "api_key_env": "CHEAPER_INFERENCE_API_KEY",
+        "base_url": "https://api.cheaperinference.com/v1",
     },
 }
 

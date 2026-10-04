@@ -36,6 +36,7 @@ _DEFAULT_API_KEY_ENVS = {
     AIProvider.DOUBAO: "DOUBAO_API_KEY",
     AIProvider.MINIMAX: "MINIMAX_API_KEY",
     AIProvider.DEEPSEEK: "DEEPSEEK_API_KEY",
+    AIProvider.CHEAPERINFERENCE: "CHEAPER_INFERENCE_API_KEY",
 }
 
 
@@ -557,6 +558,7 @@ def _create_single_client(config: AIConfig) -> AIClient:
         AIProvider.MINIMAX,
         AIProvider.DEEPSEEK,
         AIProvider.OLLAMA,
+        AIProvider.CHEAPERINFERENCE,
     }:
         return OpenAIClient(config)
     else:

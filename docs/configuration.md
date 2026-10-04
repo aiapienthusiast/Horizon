@@ -137,6 +137,7 @@ Common API key variable names:
 | Aliyun DashScope | `DASHSCOPE_API_KEY` |
 | Doubao | `DOUBAO_API_KEY` |
 | DeepSeek | `DEEPSEEK_API_KEY` |
+| Cheaper Inference | `CHEAPER_INFERENCE_API_KEY` |
 
 **Anthropic Claude**:
 
@@ -271,6 +272,22 @@ For remote Ollama servers, set `ai.base_url` in the active config file or set
 `HORIZON_OLLAMA_BASE_URL` in `.env`. `OLLAMA_BASE_URL` and `OLLAMA_HOST` are
 also recognized. If the value omits `/v1`, Horizon appends it automatically
 for Ollama's OpenAI-compatible endpoint.
+
+**Cheaper Inference** (OpenAI-compatible):
+
+```json
+{
+  "ai": {
+    "provider": "cheaperinference",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "CHEAPER_INFERENCE_API_KEY",
+    "throttle_sec": 0
+  }
+}
+```
+
+Set `CHEAPER_INFERENCE_API_KEY` in your `.env`. Get a key at [cheaperinference.com](https://cheaperinference.com/signup).
+Optional: set `base_url` to override the default `https://api.cheaperinference.com/v1`.
 
 ### AI throttling
 

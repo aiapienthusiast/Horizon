@@ -334,6 +334,22 @@ class TestFactoryFunction:
         assert isinstance(client, OpenAIClient)
         assert client.provider == "minimax"
 
+    def test_creates_openai_client_for_cheaperinference(self, monkeypatch):
+        monkeypatch.setenv("CHEAPER_INFERENCE_API_KEY", "test-key")
+        defaults = AI_PROVIDER_DEFAULTS[AIProvider.CHEAPERINFERENCE]
+        config = _make_config(
+            provider=AIProvider.CHEAPERINFERENCE,
+            model=defaults["model"],
+            api_key_env=defaults["api_key_env"],
+        )
+        client = create_ai_client(config)
+        assert isinstance(client, OpenAIClient)
+        assert client.provider == "cheaperinference"
+        assert (
+            str(client.client.base_url).rstrip("/")
+            == "https://api.cheaperinference.com/v1"
+        )
+
     @pytest.mark.parametrize(
         "base_url",
         [
